@@ -1,0 +1,233 @@
+/* Reset e variabili */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #00c6ff;
+    --text-color: #333;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* Sezioni */
+.section {
+    padding: 80px 0;
+}
+
+.section.bg-light {
+    background-color: var(--bg-light);
+}
+
+.section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.section h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    color: var(--secondary-color);
+}
+
+/* Motivazione */
+.motivation-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.motivation-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.motivation-image {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+/* Risorse */
+.resource-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.resource-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.resource-list a:hover {
+    background-color: #e9ecef;
+}
+
+/* Griglia per gli esempi audio */
+.audio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Scheda singolo esempio */
+.audio-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.audio-card h3 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+
+/* Contenitore delle due colonne (Target vs Generato) */
+.card-content {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+/* Singola colonna (Target o Generato) */
+.sub-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-col h4 {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Video dello spettrogramma */
+.sub-col video {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    background-color: #000; /* Sfondo nero per far risaltare lo spettrogramma */
+}
+
+/* Player audio */
+.sub-col audio {
+    width: 100%;
+    outline: none;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .motivation-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

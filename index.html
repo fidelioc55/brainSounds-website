@@ -1,307 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrainSounds: Generative fMRI-to-Audio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome per le icone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="BrainSounds explores direct fMRI-to-audio reconstruction. Listen to original and reconstructed sounds, explore the framework, and view cortical contribution analyses.">
+ <meta name="theme-color" content="#f7f7f2">
+ <title>BrainSounds — From brain activity to sound</title>
+ <link rel="stylesheet" href="style.css">
+ <script src="script.js" defer></script>
 </head>
 <body>
+ <a class="skip-link" href="#main">Skip to content</a>
+ <header class="site-header"><div class="container nav-wrap">
+  <a class="brand" href="#top" aria-label="BrainSounds home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>BrainSounds<span class="brand-period">.</span></a>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#framework">Method</a><a href="#audio-examples">Listen</a><a href="#authors">Authors</a><a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank" rel="noopener noreferrer" class="nav-paper">Read the paper <span aria-hidden="true">↗</span></a></nav>
+ </div></header>
+ <main id="main">
+ <section class="hero" id="top"><div class="container">
+  <div class="hero-grid"><div class="hero-copy">
+   <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Auditory neuroscience · Generative AI</p>
+   <h1>From brain<br>activity <em>to sound.</em></h1>
+   <p class="hero-description">Reconstructing sound from fMRI with a directly conditioned audio diffusion model.</p>
+   <div class="hero-buttons"><a class="button primary" href="#audio-examples">Listen to reconstructions <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank" rel="noopener noreferrer">Explore the paper <span aria-hidden="true">↗</span></a></div>
+   <p class="hero-note">Brain signals in. Audio waveforms out.</p>
+  </div>
+  <div class="hero-visual" aria-label="Overview of direct brain conditioning">
+   <div class="visual-top"><span>fMRI → AUDIO</span><span class="visual-tag">Direct conditioning</span></div>
+   <div class="signal-scene" aria-hidden="true"><div class="signal-orbit orbit-one"></div><div class="signal-orbit orbit-two"></div><div class="waveform"><i style="--bar:12%"></i><i style="--bar:21%"></i><i style="--bar:16%"></i><i style="--bar:36%"></i><i style="--bar:54%"></i><i style="--bar:27%"></i><i style="--bar:67%"></i><i style="--bar:89%"></i><i style="--bar:47%"></i><i style="--bar:74%"></i><i style="--bar:100%"></i><i style="--bar:65%"></i><i style="--bar:40%"></i><i style="--bar:80%"></i><i style="--bar:52%"></i><i style="--bar:29%"></i><i style="--bar:64%"></i><i style="--bar:41%"></i><i style="--bar:22%"></i><i style="--bar:33%"></i><i style="--bar:16%"></i><i style="--bar:9%"></i></div><span class="signal-label label-left">BRAIN TOKENS</span><span class="signal-label label-right">AUDIO DIFFUSION</span></div>
+   <div class="visual-bottom"><span>Neural activity</span><span class="flow-line" aria-hidden="true"></span><span>Sound reconstruction</span></div>
+   <p class="visual-caption">A direct connection between auditory cortex and generative audio.</p>
+  </div></div>
+  <div class="author-strip"><p><a href="#authors">Matteo Ciferri<sup>1</sup></a><a href="#authors">Tonio Weidler<sup>2</sup></a><a href="#authors">Matteo Ferrante<sup>1,3</sup></a><a href="#authors">Nicola Toschi<sup>1,4,*</sup></a><a href="#authors">Elia Formisano<sup>5,*</sup></a></p><a class="text-link" href="#authors">Authors &amp; affiliations <span aria-hidden="true">↗</span></a></div>
+ </div></section>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <h1>BrainSounds: Generative fMRI-to-Audio</h1>
-            <p class="subtitle">Reconstructing Sound from Brain Activity Without Semantic Supervision</p>
-            
-            <!-- AUTHORS & AFFILIATIONS -->
-            <div class="authors">
-                <p><strong>Author One<sup>1</sup>, Author Two<sup>1</sup>, Author Three<sup>2</sup></strong></p>
-                <p class="affiliations">
-                    <sup>1</sup>University of Example, Department of Neuroscience<br>
-                    <sup>2</sup>Institute of Advanced Research, Audio Lab
-                </p>
-            </div>
+ <section class="section overview" id="overview"><div class="container">
+  <div class="section-intro"><div><p class="eyebrow">01 / The idea</p><h2>Hearing through <br>brain activity.</h2></div><div class="intro-copy"><p class="lead">Can a generative model reconstruct sounds directly from responses in the auditory cortex?</p><p>BrainSounds explores a direct route from fMRI beta responses to audio. Instead of first predicting an intermediate semantic representation, the framework converts neural responses into brain tokens that condition a pretrained audio diffusion model through cross-attention.</p><p>This provides a way to study both sound reconstruction and the contributions of different auditory cortical regions.</p></div></div>
+  <div class="stats"><div><strong>288</strong><span>unique sounds</span></div><div><strong>5</strong><span>participants</span></div><div><strong>6</strong><span>auditory regions</span></div><div><strong>6</strong><span>sound categories</span></div></div>
+  <details class="research-note"><summary>View the motivation and experimental setup <span aria-hidden="true">+</span></summary><a class="zoom-link" data-zoom href="images/brain-icon.png"><img src="images/brain-icon.png" width="3809" height="1575" loading="lazy" alt="Original motivation and setup slide: direct brain conditioning, 288 sounds, five subjects, six auditory ROIs, six sound categories, and four cross-validation splits"><span class="enlarge">↗</span></a></details>
+ </div></section>
 
-            <div class="hero-buttons">
-                <a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-file-alt"></i> Paper
-                </a>
-                <a href="https://anonymous.4open.science/r/brainSounds_nips-DFC1" target="_blank" class="btn btn-secondary">
-                    <i class="fas fa-code"></i> Code
-                </a>
-            </div>
-        </div>
-    </header>
+ <section class="section method" id="framework"><div class="container">
+  <div class="section-heading"><div><p class="eyebrow">02 / The framework</p><h2>A direct path to audio.</h2></div><p>Brain tokens connect regional fMRI responses to the generative audio model.</p></div>
+  <div class="steps"><div><span class="step-number">01</span><h3>Encode brain responses</h3><p>Project fMRI responses from six auditory regions into regional representations.</p></div><div><span class="step-number">02</span><h3>Generate brain tokens</h3><p>Combine the regional representations into conditioning tokens.</p></div><div><span class="step-number">03</span><h3>Condition audio diffusion</h3><p>Inject brain tokens through cross-attention to guide sound generation.</p></div></div>
+  <figure class="figure-panel"><a class="zoom-link" data-zoom href="images/framework-diagram.png" aria-label="Enlarge the framework diagram"><img src="images/framework-diagram.png" width="4443" height="1893" loading="lazy" alt="Framework: ROI projector, brain-token generator, fMRI adapter, Stable Audio diffusion transformer and waveform decoder"><span class="enlarge">↗</span></a><figcaption><span>THE ARCHITECTURE</span>From regional fMRI responses to a reconstructed waveform. Select the figure to enlarge.</figcaption></figure>
+ </div></section>
 
-    <!-- Abstract Section -->
-    <section id="abstract" class="section">
-        <div class="container">
-            <h2>Abstract</h2>
-            <p>
-                <!-- MODIFICA QUESTO TESTO CON IL TUO ABSTRACT -->
-                This work introduces a generative framework for reconstructing sound waveforms directly from fMRI beta responses in the auditory cortex. By bypassing intermediate semantic representations (e.g., CLAP), we prevent bottlenecks and allow for purely acoustic generalization. We leverage a latent diffusion model (Stable Audio) and inject brain tokens via cross-attention mechanisms without architectural surgery.
-            </p>
-        </div>
-    </section>
+ <section class="section listening" id="audio-examples"><div class="container">
+  <div class="section-heading"><div><p class="eyebrow">03 / Listen &amp; compare</p><h2>The sounds, reconstructed.</h2></div><p>Listen to the original stimulus and its reconstruction from fMRI. Each pair includes a spectrogram.</p></div>
+  <div class="listening-toolbar"><div class="filters" role="group" aria-label="Filter examples by sound type" hidden><button type="button" data-filter="All" aria-pressed="true">All</button><button type="button" data-filter="Music" aria-pressed="false">Music</button><button type="button" data-filter="Animals" aria-pressed="false">Animals</button><button type="button" data-filter="Nature" aria-pressed="false">Nature</button><button type="button" data-filter="Human sounds" aria-pressed="false">Human sounds</button></div><p id="example-count" role="status" aria-live="polite">9 examples</p></div>
+  <div class="audio-grid"><article class="audio-card" data-category="Human sounds">
+ <div class="card-heading"><h3>Baby crying</h3><span class="category">Human sounds</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/bamgino_piange_true_spec.jpg" aria-label="Baby crying: Original spectrogram" src="audio_see/bamgino_piange_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Baby crying: Original" src="audio_see/bamgino_piange_true.wav">Your browser does not support audio. <a href="audio_see/bamgino_piange_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/bambino_piange_gen_spec.jpg" aria-label="Baby crying: Reconstructed spectrogram" src="audio_see/bambino_piange_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Baby crying: Reconstructed" src="audio_see/bambino_piange_gen.wav">Your browser does not support audio. <a href="audio_see/bambino_piange_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Music">
+ <div class="card-heading"><h3>Flute</h3><span class="category">Music</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/flute_true_spec.jpg" aria-label="Flute: Original spectrogram" src="audio_see/flute_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Flute: Original" src="audio_see/flute_true.wav">Your browser does not support audio. <a href="audio_see/flute_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/flute_gen_spec.jpg" aria-label="Flute: Reconstructed spectrogram" src="audio_see/flute_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Flute: Reconstructed" src="audio_see/flute_gen.wav">Your browser does not support audio. <a href="audio_see/flute_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Music">
+ <div class="card-heading"><h3>Guitar</h3><span class="category">Music</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/guitar_true_spec.jpg" aria-label="Guitar: Original spectrogram" src="audio_see/guitar_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Guitar: Original" src="audio_see/guitar_true.wav">Your browser does not support audio. <a href="audio_see/guitar_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/guitar_gen_spec.jpg" aria-label="Guitar: Reconstructed spectrogram" src="audio_see/guitar_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Guitar: Reconstructed" src="audio_see/guitar_gen.wav">Your browser does not support audio. <a href="audio_see/guitar_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Music">
+ <div class="card-heading"><h3>Music</h3><span class="category">Music</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/music1_true_spec.jpg" aria-label="Music: Original spectrogram" src="audio_see/music1_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Music: Original" src="audio_see/music1_true.wav">Your browser does not support audio. <a href="audio_see/music1_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/music1_gen_spec.jpg" aria-label="Music: Reconstructed spectrogram" src="audio_see/music1_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Music: Reconstructed" src="audio_see/music1_gen.wav">Your browser does not support audio. <a href="audio_see/music1_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Animals">
+ <div class="card-heading"><h3>Monkey</h3><span class="category">Animals</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/scimmia_true_spec.jpg" aria-label="Monkey: Original spectrogram" src="audio_see/scimmia_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Monkey: Original" src="audio_see/scimmia_true.wav">Your browser does not support audio. <a href="audio_see/scimmia_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/scimmia_gen_spec.jpg" aria-label="Monkey: Reconstructed spectrogram" src="audio_see/scimmia_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Monkey: Reconstructed" src="audio_see/scimmia_gen.wav">Your browser does not support audio. <a href="audio_see/scimmia_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Nature">
+ <div class="card-heading"><h3>Storm</h3><span class="category">Nature</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/temporale_true_spec.jpg" aria-label="Storm: Original spectrogram" src="audio_see/temporale_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Storm: Original" src="audio_see/temporale_true.wav">Your browser does not support audio. <a href="audio_see/temporale_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/temporale_gen_spec.jpg" aria-label="Storm: Reconstructed spectrogram" src="audio_see/temporale_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Storm: Reconstructed" src="audio_see/temporale_gen.wav">Your browser does not support audio. <a href="audio_see/temporale_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Animals">
+ <div class="card-heading"><h3>Bird</h3><span class="category">Animals</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/uccello_true_spec.jpg" aria-label="Bird: Original spectrogram" src="audio_see/uccello_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Bird: Original" src="audio_see/uccello_true.wav">Your browser does not support audio. <a href="audio_see/uccello_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/uccello_gen_spec.jpg" aria-label="Bird: Reconstructed spectrogram" src="audio_see/uccello_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Bird: Reconstructed" src="audio_see/uccello_gen.wav">Your browser does not support audio. <a href="audio_see/uccello_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Human sounds">
+ <div class="card-heading"><h3>Female voice</h3><span class="category">Human sounds</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/voice_female_true_spec.jpg" aria-label="Female voice: Original spectrogram" src="audio_see/voice_female_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Female voice: Original" src="audio_see/voice_female_true.wav">Your browser does not support audio. <a href="audio_see/voice_female_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/voice_female_gen_spec.jpg" aria-label="Female voice: Reconstructed spectrogram" src="audio_see/voice_female_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Female voice: Reconstructed" src="audio_see/voice_female_gen.wav">Your browser does not support audio. <a href="audio_see/voice_female_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article><article class="audio-card" data-category="Human sounds">
+ <div class="card-heading"><h3>Male voice</h3><span class="category">Human sounds</span></div>
+ <div class="comparison"><div class="sample original">
+  <p class="sample-label"><span class="dot"></span>Original</p>
+  <video muted playsinline preload="none" poster="images/posters/voice_male_true_spec.jpg" aria-label="Male voice: Original spectrogram" src="audio_see/voice_male_true_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Male voice: Original" src="audio_see/voice_male_true.wav">Your browser does not support audio. <a href="audio_see/voice_male_true.wav">Download the audio</a>.</audio>
+ </div><div class="sample generated">
+  <p class="sample-label"><span class="dot"></span>Reconstructed</p>
+  <video muted playsinline preload="none" poster="images/posters/voice_male_gen_spec.jpg" aria-label="Male voice: Reconstructed spectrogram" src="audio_see/voice_male_gen_spec.mp4"></video>
+  <audio controls preload="metadata" aria-label="Male voice: Reconstructed" src="audio_see/voice_male_gen.wav">Your browser does not support audio. <a href="audio_see/voice_male_gen.wav">Download the audio</a>.</audio>
+ </div></div>
+ </article></div>
+  <p class="listening-note">Play either audio track to animate its spectrogram. Starting another track pauses the previous one.</p>
+ </div></section>
 
-    <!-- Motivation Section -->
-    <section id="motivation" class="section bg-light">
-        <div class="container">
-            <h2>Motivation</h2>
-            <div class="motivation-content">
-                <div class="motivation-text">
-                    <h3>Can we reconstruct the original sound waveform without any semantic supervision?</h3>
-                    <p>
-                        The use of an intermediate representation from foundation models (e.g., CLAP) could introduce a bottleneck depending on the mapping model. This work explores a direct, generative approach to fMRI-to-Audio reconstruction.
-                    </p>
-                </div>
-                <!-- L'immagine ora è grande quanto quella del framework -->
-                <div class="motivation-image">
-                    <img src="images/brain-icon.png" alt="Brain with headphones">
-                </div>
-            </div>
-        </div>
-    </section>
+ <section class="section" id="cortical-contributions"><div class="container">
+  <div class="section-intro"><div><p class="eyebrow">04 / Cortical contributions</p><h2>Which regions <br>shape the sound?</h2></div><div class="intro-copy"><p class="lead">Exploring the role of individual auditory areas.</p><p>Removal and single-area analyses examine how reconstruction changes when a region is excluded or used in isolation. The figure compares reconstruction fidelity across sound categories and illustrates spectrotemporal changes in selected examples.</p><div class="roi-list" aria-label="Auditory regions"><span>HG</span><span>PT</span><span>PP</span><span>mSTG</span><span>pSTG</span><span>aSTG</span></div></div></div>
+  <figure class="figure-panel cortical-figure"><a class="zoom-link" data-zoom href="images/cortical-contrib.png" aria-label="Enlarge the cortical contributions figure"><img src="images/cortical-contrib.png" width="3995" height="2365" loading="lazy" alt="Cortical contribution results: removal and single-area fidelity heatmaps, followed by spectrotemporal representations of woman speech and monkey call"><span class="enlarge">↗</span></a><figcaption><span>REGION-WISE ANALYSIS</span>Reconstruction fidelity and spectrotemporal representations across auditory regions.</figcaption></figure>
+ </div></section>
 
-    <!-- Framework Section -->
-    <section id="framework" class="section">
-        <div class="container">
-            <h2>Framework</h2>
-            <p style="text-align: center; margin-bottom: 20px;">Our approach uses a diffusion model (Stable Audio) with brain tokens injected via cross-attention.</p>
-            <div class="framework-diagram">
-                <img src="images/framework-diagram.png" alt="Framework Architecture Diagram">
-            </div>
-        </div>
-    </section>
+ <section class="section denoising" id="denoising"><div class="container">
+  <div class="section-heading"><div><p class="eyebrow">05 / The generation process</p><h2>From noise to structure.</h2></div><p>Explore how the reconstructed spectrogram evolves over diffusion steps. Select a sequence to play the animation.</p></div>
+  <div class="gif-grid"><article class="gif-card"><div class="card-heading"><h3>Sound 0002</h3><span class="category">Trial 0002</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0002_sound0002_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0002"><img src="images/posters/trial_0002_sound0002_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0002, sound 0002" data-animation="denoise_gifs/trial_0002_sound0002_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article><article class="gif-card"><div class="card-heading"><h3>Sound 0084</h3><span class="category">Trial 0021</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0021_sound0084_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0084"><img src="images/posters/trial_0021_sound0084_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0021, sound 0084" data-animation="denoise_gifs/trial_0021_sound0084_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article><article class="gif-card"><div class="card-heading"><h3>Sound 0128</h3><span class="category">Trial 0032</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0032_sound0128_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0128"><img src="images/posters/trial_0032_sound0128_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0032, sound 0128" data-animation="denoise_gifs/trial_0032_sound0128_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article><article class="gif-card"><div class="card-heading"><h3>Sound 0135</h3><span class="category">Trial 0035</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0035_sound0135_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0135"><img src="images/posters/trial_0035_sound0135_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0035, sound 0135" data-animation="denoise_gifs/trial_0035_sound0135_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article><article class="gif-card"><div class="card-heading"><h3>Sound 0168</h3><span class="category">Trial 0040</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0040_sound0168_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0168"><img src="images/posters/trial_0040_sound0168_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0040, sound 0168" data-animation="denoise_gifs/trial_0040_sound0168_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article><article class="gif-card"><div class="card-heading"><h3>Sound 0274</h3><span class="category">Trial 0070</span></div>
+ <a class="zoom-link" href="denoise_gifs/trial_0070_sound0274_denoise_steps.gif" data-zoom aria-label="Enlarge denoising sequence for sound 0274"><img src="images/posters/trial_0070_sound0274_denoise_steps.jpg" width="1450" height="459" loading="lazy" alt="Denoising sequence for trial 0070, sound 0274" data-animation="denoise_gifs/trial_0070_sound0274_denoise_steps.gif"><span class="enlarge">↗</span></a>
+ <button class="animation-toggle" hidden type="button" aria-pressed="false">Play denoising sequence <span aria-hidden="true">▷</span></button></article></div>
+ </div></section>
 
-    <!-- Audio & Spectrogram Reconstructions Section -->
-    <section id="audio-examples" class="section bg-light">
-        <div class="container">
-            <h2>Listen to the Reconstructions</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Compare the original target audio (ground truth) with the audio reconstructed from fMRI data.</p>
-            
-            <div class="audio-grid">
-                
-                <!-- 1. Baby Crying -->
-                <div class="audio-card">
-                    <h3>Baby Crying</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <!-- CORRETTO: bamgino invece di bambino per i file true -->
-                            <video autoplay loop muted playsinline src="audio_see/bamgino_piange_true_spec.mp4"></video>
-                            <audio controls src="audio_see/bamgino_piange_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/bambino_piange_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/bambino_piange_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
+ <section class="section authors-section" id="authors"><div class="container">
+  <div class="section-heading"><div><p class="eyebrow">06 / The team</p><h2>Authors &amp; affiliations.</h2></div><a class="text-link" href="mailto:matteo.ciferri@students.uniroma2.eu">Contact Matteo Ciferri <span aria-hidden="true">↗</span></a></div>
+  <div class="author-names"><p>Matteo Ciferri<sup>1</sup></p><p>Tonio Weidler<sup>2</sup></p><p>Matteo Ferrante<sup>1,3</sup></p><p>Nicola Toschi<sup>1,4,*</sup></p><p>Elia Formisano<sup>5,*</sup></p></div>
+  <ol class="affiliations"><li><strong>University of Rome Tor Vergata</strong><span>Department of Biomedicine and Prevention<br>Italy</span></li><li><strong>Maastricht University</strong><span>Maastricht Centre for Systems Biology (MaCSBio)<br>Faculty of Science and Engineering<br>The Netherlands</span></li><li><strong>Tether Evo</strong><span>El Salvador</span></li><li><strong>Massachusetts General Hospital &amp; Harvard Medical School</strong><span>Athinoula A. Martinos Center for Biomedical Imaging<br>USA</span></li><li><strong>Maastricht University</strong><span>Maastricht Brain Imaging Center<br>Department of Cognitive Neuroscience<br>Faculty of Psychology and Neuroscience<br>The Netherlands</span></li></ol>
+  <p class="author-note">* Equal contribution.</p>
+ </div></section>
 
-                <!-- 2. Flute -->
-                <div class="audio-card">
-                    <h3>Flute</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/flute_true_spec.mp4"></video>
-                            <audio controls src="audio_see/flute_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/flute_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/flute_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Guitar -->
-                <div class="audio-card">
-                    <h3>Guitar</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/guitar_true_spec.mp4"></video>
-                            <audio controls src="audio_see/guitar_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/guitar_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/guitar_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Music -->
-                <div class="audio-card">
-                    <h3>Music</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/music1_true_spec.mp4"></video>
-                            <audio controls src="audio_see/music1_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/music1_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/music1_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. Monkey -->
-                <div class="audio-card">
-                    <h3>Monkey</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/scimmia_true_spec.mp4"></video>
-                            <audio controls src="audio_see/scimmia_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/scimmia_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/scimmia_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Storm -->
-                <div class="audio-card">
-                    <h3>Storm</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/temporale_true_spec.mp4"></video>
-                            <audio controls src="audio_see/temporale_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/temporale_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/temporale_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7. Bird -->
-                <div class="audio-card">
-                    <h3>Bird</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/uccello_true_spec.mp4"></video>
-                            <audio controls src="audio_see/uccello_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/uccello_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/uccello_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. Female Voice -->
-                <div class="audio-card">
-                    <h3>Female Voice</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/voice_female_true_spec.mp4"></video>
-                            <audio controls src="audio_see/voice_female_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/voice_female_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/voice_female_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9. Male Voice -->
-                <div class="audio-card">
-                    <h3>Male Voice</h3>
-                    <div class="card-content">
-                        <div class="sub-col">
-                            <h4>Target (Original)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/voice_male_true_spec.mp4"></video>
-                            <audio controls src="audio_see/voice_male_true.wav"></audio>
-                        </div>
-                        <div class="sub-col">
-                            <h4>Generated (Reconstructed)</h4>
-                            <video autoplay loop muted playsinline src="audio_see/voice_male_gen_spec.mp4"></video>
-                            <audio controls src="audio_see/voice_male_gen.wav"></audio>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Denoising Process Section -->
-    <section id="denoising" class="section">
-        <div class="container">
-            <h2>Denoising Process</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Watch how the diffusion model progressively generates the spectrogram from noise.</p>
-            
-            <div class="gif-grid">
-                <!-- GIF 1 -->
-                <div class="gif-card">
-                    <h4>Trial 0002 - Sound 2</h4>
-                    <img src="denoise_gifs/trial_0002_sound0...2_denoise_steps.gif" alt="Denoising steps for trial 0002">
-                </div>
-                <!-- GIF 2 -->
-                <div class="gif-card">
-                    <h4>Trial 0021 - Sound 4</h4>
-                    <img src="denoise_gifs/trial_0021_sound0...4_denoise_steps.gif" alt="Denoising steps for trial 0021">
-                </div>
-                <!-- GIF 3 -->
-                <div class="gif-card">
-                    <h4>Trial 0032 - Sound 0128</h4>
-                    <img src="denoise_gifs/trial_0032_sound0128_denoise_steps.gif" alt="Denoising steps for trial 0032">
-                </div>
-                <!-- GIF 4 -->
-                <div class="gif-card">
-                    <h4>Trial 0035 - Sound 0135</h4>
-                    <img src="denoise_gifs/trial_0035_sound0135_denoise_steps.gif" alt="Denoising steps for trial 0035">
-                </div>
-                <!-- GIF 5 -->
-                <div class="gif-card">
-                    <h4>Trial 0040 - Sound 0168</h4>
-                    <img src="denoise_gifs/trial_0040_sound0168_denoise_steps.gif" alt="Denoising steps for trial 0040">
-                </div>
-                <!-- GIF 6 -->
-                <div class="gif-card">
-                    <h4>Trial 0070 - Sound 0274</h4>
-                    <img src="denoise_gifs/trial_0070_sound0274_denoise_steps.gif" alt="Denoising steps for trial 0070">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="section bg-light">
-        <div class="container">
-            <h2>Resources</h2>
-            <ul class="resource-list">
-                <li><a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank"><i class="fas fa-file-pdf"></i> Paper on OpenReview</a></li>
-                <li><a href="https://anonymous.4open.science/r/brainSounds_nips-DFC1" target="_blank"><i class="fas fa-code-branch"></i> Anonymous Code Repository</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 BrainSounds Project. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+ <section class="resources" id="resources"><div class="container resource-inner"><div><p class="eyebrow">Explore the research</p><h2>Go deeper into BrainSounds.</h2><p>Read the paper and explore the implementation.</p></div><div class="resource-links"><a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank" rel="noopener noreferrer">Paper on OpenReview <span aria-hidden="true">↗</span></a><a href="https://anonymous.4open.science/r/brainSounds_nips-DFC1" target="_blank" rel="noopener noreferrer">Code repository <span aria-hidden="true">↗</span></a></div></div></section>
+ </main>
+ <footer><div class="container footer-inner"><a class="brand" href="#top">BrainSounds<span class="brand-period">.</span></a><p>Generative fMRI-to-audio reconstruction · 2026</p><a href="#top">Back to top ↑</a></div></footer>
+ <dialog id="figure-dialog" aria-label="Enlarged research figure"><div class="dialog-bar"><p id="figure-caption">Research figure</p><button type="button" id="close-dialog" aria-label="Close enlarged figure">Close ×</button></div><div class="dialog-image"><img id="enlarged-image" alt=""></div></dialog>
 </body>
 </html>

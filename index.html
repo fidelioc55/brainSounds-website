@@ -15,15 +15,22 @@
         <div class="container">
             <h1>BrainSounds: Generative fMRI-to-Audio</h1>
             <p class="subtitle">Reconstructing Sound from Brain Activity Without Semantic Supervision</p>
+            
+            <!-- AUTHORS & AFFILIATIONS -->
+            <div class="authors">
+                <p><strong>Author One<sup>1</sup>, Author Two<sup>1</sup>, Author Three<sup>2</sup></strong></p>
+                <p class="affiliations">
+                    <sup>1</sup>University of Example, Department of Neuroscience<br>
+                    <sup>2</sup>Institute of Advanced Research, Audio Lab
+                </p>
+            </div>
+
             <div class="hero-buttons">
                 <a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank" class="btn btn-primary">
                     <i class="fas fa-file-alt"></i> Paper
                 </a>
                 <a href="https://anonymous.4open.science/r/brainSounds_nips-DFC1" target="_blank" class="btn btn-secondary">
                     <i class="fas fa-code"></i> Code
-                </a>
-                <a href="https://www.canva.com/design/DAHEe5hWxm0/Kit9dNeQb9xIovHG2PohrA/edit" target="_blank" class="btn btn-secondary">
-                    <i class="fas fa-palette"></i> Canva Design
                 </a>
             </div>
         </div>
@@ -51,9 +58,9 @@
                         The use of an intermediate representation from foundation models (e.g., CLAP) could introduce a bottleneck depending on the mapping model. This work explores a direct, generative approach to fMRI-to-Audio reconstruction.
                     </p>
                 </div>
+                <!-- L'immagine ora è grande quanto quella del framework -->
                 <div class="motivation-image">
-                    <!-- Se non hai questa immagine, puoi rimuovere questo tag <img> -->
-                    <img src="images/brain-icon.png" alt="Brain with headphones" style="max-width: 200px;">
+                    <img src="images/brain-icon.png" alt="Brain with headphones">
                 </div>
             </div>
         </div>
@@ -63,10 +70,9 @@
     <section id="framework" class="section">
         <div class="container">
             <h2>Framework</h2>
-            <p>Our approach uses a diffusion model (Stable Audio) with brain tokens injected via cross-attention.</p>
+            <p style="text-align: center; margin-bottom: 20px;">Our approach uses a diffusion model (Stable Audio) with brain tokens injected via cross-attention.</p>
             <div class="framework-diagram">
-                <!-- Inserisci qui lo schema dell'architettura (slide 4) se ce l'hai -->
-                <img src="images/framework-diagram.png" alt="Framework Architecture Diagram" style="width:100%; max-width: 1000px; display: block; margin: 0 auto;">
+                <img src="images/framework-diagram.png" alt="Framework Architecture Diagram">
             </div>
         </div>
     </section>
@@ -79,17 +85,18 @@
             
             <div class="audio-grid">
                 
-                <!-- 1. Bambino Piange -->
+                <!-- 1. Baby Crying -->
                 <div class="audio-card">
-                    <h3>Bambino Piange (Baby Crying)</h3>
+                    <h3>Baby Crying</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
+                            <!-- CORRETTO: bamgino invece di bambino per i file true -->
                             <video autoplay loop muted playsinline src="audio_see/bamgino_piange_true_spec.mp4"></video>
                             <audio controls src="audio_see/bamgino_piange_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/bambino_piange_gen_spec.mp4"></video>
                             <audio controls src="audio_see/bambino_piange_gen.wav"></audio>
                         </div>
@@ -101,12 +108,12 @@
                     <h3>Flute</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/flute_true_spec.mp4"></video>
                             <audio controls src="audio_see/flute_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/flute_gen_spec.mp4"></video>
                             <audio controls src="audio_see/flute_gen.wav"></audio>
                         </div>
@@ -118,114 +125,114 @@
                     <h3>Guitar</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/guitar_true_spec.mp4"></video>
                             <audio controls src="audio_see/guitar_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/guitar_gen_spec.mp4"></video>
                             <audio controls src="audio_see/guitar_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. Music1 -->
+                <!-- 4. Music -->
                 <div class="audio-card">
                     <h3>Music</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/music1_true_spec.mp4"></video>
                             <audio controls src="audio_see/music1_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/music1_gen_spec.mp4"></video>
                             <audio controls src="audio_see/music1_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 5. Scimmia -->
+                <!-- 5. Monkey -->
                 <div class="audio-card">
-                    <h3>Scimmia (Monkey)</h3>
+                    <h3>Monkey</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/scimmia_true_spec.mp4"></video>
                             <audio controls src="audio_see/scimmia_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/scimmia_gen_spec.mp4"></video>
                             <audio controls src="audio_see/scimmia_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 6. Temporale -->
+                <!-- 6. Storm -->
                 <div class="audio-card">
-                    <h3>Temporale (Storm)</h3>
+                    <h3>Storm</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/temporale_true_spec.mp4"></video>
                             <audio controls src="audio_see/temporale_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/temporale_gen_spec.mp4"></video>
                             <audio controls src="audio_see/temporale_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 7. Uccello -->
+                <!-- 7. Bird -->
                 <div class="audio-card">
-                    <h3>Uccello (Bird)</h3>
+                    <h3>Bird</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/uccello_true_spec.mp4"></video>
                             <audio controls src="audio_see/uccello_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/uccello_gen_spec.mp4"></video>
                             <audio controls src="audio_see/uccello_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 8. Voice Female -->
+                <!-- 8. Female Voice -->
                 <div class="audio-card">
-                    <h3>Voce Femminile (Female Voice)</h3>
+                    <h3>Female Voice</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/voice_female_true_spec.mp4"></video>
                             <audio controls src="audio_see/voice_female_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/voice_female_gen_spec.mp4"></video>
                             <audio controls src="audio_see/voice_female_gen.wav"></audio>
                         </div>
                     </div>
                 </div>
 
-                <!-- 9. Voice Male -->
+                <!-- 9. Male Voice -->
                 <div class="audio-card">
-                    <h3>Voce Maschile (Male Voice)</h3>
+                    <h3>Male Voice</h3>
                     <div class="card-content">
                         <div class="sub-col">
-                            <h4>Target (Originale)</h4>
+                            <h4>Target (Original)</h4>
                             <video autoplay loop muted playsinline src="audio_see/voice_male_true_spec.mp4"></video>
                             <audio controls src="audio_see/voice_male_true.wav"></audio>
                         </div>
                         <div class="sub-col">
-                            <h4>Generato (Ricostruito)</h4>
+                            <h4>Generated (Reconstructed)</h4>
                             <video autoplay loop muted playsinline src="audio_see/voice_male_gen_spec.mp4"></video>
                             <audio controls src="audio_see/voice_male_gen.wav"></audio>
                         </div>
@@ -236,14 +243,43 @@
         </div>
     </section>
 
-    <!-- Results Section (Opzionale) -->
-    <section id="results" class="section">
+    <!-- Denoising Process Section -->
+    <section id="denoising" class="section">
         <div class="container">
-            <h2>Quantitative Results</h2>
-            <p style="text-align: center;">Check out the confusion matrices and ablation studies below.</p>
-            <div class="results-grid">
-                <!-- Inserisci qui le immagini delle matrici di confusione (slide 9, 10, 18) -->
-                <img src="images/confusion-matrix.png" alt="Confusion Matrix" style="max-width: 100%; height: auto;">
+            <h2>Denoising Process</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Watch how the diffusion model progressively generates the spectrogram from noise.</p>
+            
+            <div class="gif-grid">
+                <!-- GIF 1 -->
+                <div class="gif-card">
+                    <h4>Trial 0002 - Sound 2</h4>
+                    <img src="denoise_gifs/trial_0002_sound0...2_denoise_steps.gif" alt="Denoising steps for trial 0002">
+                </div>
+                <!-- GIF 2 -->
+                <div class="gif-card">
+                    <h4>Trial 0021 - Sound 4</h4>
+                    <img src="denoise_gifs/trial_0021_sound0...4_denoise_steps.gif" alt="Denoising steps for trial 0021">
+                </div>
+                <!-- GIF 3 -->
+                <div class="gif-card">
+                    <h4>Trial 0032 - Sound 0128</h4>
+                    <img src="denoise_gifs/trial_0032_sound0128_denoise_steps.gif" alt="Denoising steps for trial 0032">
+                </div>
+                <!-- GIF 4 -->
+                <div class="gif-card">
+                    <h4>Trial 0035 - Sound 0135</h4>
+                    <img src="denoise_gifs/trial_0035_sound0135_denoise_steps.gif" alt="Denoising steps for trial 0035">
+                </div>
+                <!-- GIF 5 -->
+                <div class="gif-card">
+                    <h4>Trial 0040 - Sound 0168</h4>
+                    <img src="denoise_gifs/trial_0040_sound0168_denoise_steps.gif" alt="Denoising steps for trial 0040">
+                </div>
+                <!-- GIF 6 -->
+                <div class="gif-card">
+                    <h4>Trial 0070 - Sound 0274</h4>
+                    <img src="denoise_gifs/trial_0070_sound0274_denoise_steps.gif" alt="Denoising steps for trial 0070">
+                </div>
             </div>
         </div>
     </section>
@@ -255,7 +291,6 @@
             <ul class="resource-list">
                 <li><a href="https://openreview.net/forum?id=OlCa72ym7P&noteId=AanDjM3eqV" target="_blank"><i class="fas fa-file-pdf"></i> Paper on OpenReview</a></li>
                 <li><a href="https://anonymous.4open.science/r/brainSounds_nips-DFC1" target="_blank"><i class="fas fa-code-branch"></i> Anonymous Code Repository</a></li>
-                <li><a href="https://www.canva.com/design/DAHEe5hWxm0/Kit9dNeQb9xIovHG2PohrA/edit" target="_blank"><i class="fas fa-palette"></i> Canva Design</a></li>
             </ul>
         </div>
     </section>
